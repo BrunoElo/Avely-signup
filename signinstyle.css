@@ -42,26 +42,28 @@ body {
 }
 
 .inputstyle{
-width: 285px;
-height: 44px;
-border-style: none;
-background-color: #F0F0F0;
-border-radius: 16px;
-margin-top: 4px;
-margin-bottom: 20px;
-padding-left: 16px;
-font-size: 18px;
-font-family: 'Montserrat', sans-serif;
-outline: none;
-}
+    width: 285px;
+    height: 44px;
+    border-style: none;
+    background-color: #F0F0F0;
+    border-radius: 16px;
+    margin-top: 4px;
+    margin-bottom: 20px;
+    padding-left: 16px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    }
+    
+ .inputstyle:focus, .inputstyle:active {
+        border: 1px solid #45789D;
+    }
 
-.inputstyle:focus, .inputstyle:active {
-    border: 1px solid #45789D;
-}
 
 .inputstyle::placeholder {
-    color: #A8DADC;
-}
+        color: #A8DADC;
+    }
+    
 
 #usersignin label {
     font-size: 18px;
@@ -90,10 +92,6 @@ outline: none;
 
 #membersu {
 color: #1D3557;
-}
-
-#membersu a {
-    text-decoration: none;
 }
 
 .signbtn {
@@ -161,8 +159,9 @@ color: #1D3557;
     box-shadow: 0px -5px 9px rgba(0, 0, 0, 0.2), 0px 4px 4px rgba(0, 0, 0, 0.25);
     outline: none;
 }
+
 /*.abcRioButtonLightBlue is an automatic class for the rendered google sign in button*/
-#gbtn,.abcRioButtonLightBlue {
+#gbtn, .abcRioButtonLightBlue {
     height: 51px;
     width: 143px;
     background-color: white;
@@ -174,6 +173,7 @@ color: #1D3557;
     box-shadow: 0px -5px 9px rgba(0, 0, 0, 0.2), 0px 4px 4px rgba(0, 0, 0, 0.25);
     outline: none;
 }
+
 /*hides the initially created button so the rendered one can take place*/
 #gbtn {
     display: none;
@@ -199,18 +199,4 @@ color: #1D3557;
 #gbtntext {
 position: relative;
 bottom: 5px;
-}
-
-/*Anything with .abcRioButton is for the google button*/
-.abcRioButtonSvg {
-    width: 30px;
-    height: 30px;
-    position: relative;
-    bottom: 4px;
-}
-
-.abcRioButtonContents {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
 }

@@ -17,24 +17,3 @@ function myFunction() {
         x.setAttribute('style', "visibility:hidden;")
     }
 }
-
-/*
-// This is to load google custom sign in button (also add ?onload=renderButton in the script in head tag)
-function onSuccess(googleUser) {
-    console.log("Logged in as: " + googleUser.getBasicProfile().getName());
-}
-function onFailure(error) {
-    console.log(error);
-}
-function renderButton() {
-    gapi.signin2.render('gbtn', {
-        'scope': 'profile email',
-        'width': 143,
-        'height': 51,
-        'longtitle': false,
-        'theme': 'light',
-        'onsuccess': onSuccess,
-        'onFailure': onFailure
-    });
-}*/
-
