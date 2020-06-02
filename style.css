@@ -41,7 +41,7 @@ body {
     width: 290px;  
 }
 
-#usersignin input[id="useremail"], #usersignin input[id="userpword"], #usersignin input[id="fnamelname"] {
+.inputstyle{
 width: 285px;
 height: 44px;
 border-style: none;
@@ -52,6 +52,11 @@ margin-bottom: 20px;
 padding-left: 16px;
 font-size: 18px;
 font-family: 'Montserrat', sans-serif;
+outline: none;
+}
+
+.inputstyle:focus, .inputstyle:active {
+    border: 1px solid #45789D;
 }
 
 #usersignin input[id="useremail"]::placeholder, #usersignin input[id="userpword"]::placeholder, #usersignin input[id="fnamelname"]::placeholder {
@@ -103,6 +108,7 @@ color: #1D3557;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 24px;
+    outline: none;
 }
 
 #hrleft {
@@ -153,18 +159,24 @@ color: #1D3557;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     box-shadow: 0px -5px 9px rgba(0, 0, 0, 0.2), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    outline: none;
 }
-
-#gbtn {
+/*.abcRioButtonLightBlue is an automatic class for the rendered google sign in button*/
+#gbtn,.abcRioButtonLightBlue {
     height: 51px;
     width: 143px;
     background-color: white;
     color: black;
-    border-radius: 16px;
+    border-radius: 16px !important;
     border-style: none;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     box-shadow: 0px -5px 9px rgba(0, 0, 0, 0.2), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    outline: none;
+}
+/*hides the initially created button so the rendered one can take place*/
+#gbtn {
+    display: none;
 }
 
 #flogo {
@@ -187,4 +199,18 @@ color: #1D3557;
 #gbtntext {
 position: relative;
 bottom: 5px;
+}
+
+/*Anything with .abcRioButton is for the google button*/
+.abcRioButtonSvg {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 4px;
+}
+
+.abcRioButtonContents {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
 }

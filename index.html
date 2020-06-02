@@ -5,11 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1.0">
+    <meta name="google-signin-client_id"
+        content="74650247088-49tqet1r7ra8g7fmh46ji4l1me8kkr0h.apps.googleusercontent.com">
     <title>Sign up</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script defer type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
+
+    <script>
+        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+            console.log('statusChangeCallback');
+            console.log(response);                   // The current login status of the person.
+            if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+                testAPI();
+            } else {                                 // Not logged into your webpage or we are unable to tell.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                    'into this webpage.';
+            }
+        }
+
+
+        function checkLoginState() {               // Called when a person is finished with the Login Button.
+            FB.getLoginStatus(function (response) {   // See the onlogin handler
+                statusChangeCallback(response);
+            });
+        }
+
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '{242540883508351}',
+                cookie: true,                     // Enable cookies to allow the server to access the session.
+                xfbml: true,                     // Parse social plugins on this webpage.
+                version: '{v7.0}'           // Use this Graph API version for this call.
+            });
+
+
+            FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+                statusChangeCallback(response);        // Returns the login status.
+            });
+        };
+
+
+        (function (d, s, id) {                      // Load the SDK asynchronously
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
+        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML =
+                    'Thanks for logging in, ' + response.name + '!';
+            });
+        }
+    </script>
+    <script src="https://apis.google.com/js/platform.js?" async defer></script>
+
     <img id="avelylogo"
         src="https://res.cloudinary.com/brunoelo/image/upload/v1590168302/SNG%20Project/pngwing.com.png">
     <h1 id="appname"><span id="ave">A</span>ve<span id="ly">ly</span></h1>
@@ -17,11 +76,13 @@
         <form action="" method="POST">
             <div>
                 <label for="fnamelname">Full Name</label><br>
-                <input type="text" id="fnamelname" name="fnamelname" placeholder="Firstname Lastname">
+                <input type="text" class="inputstyle" id="fnamelname" name="fnamelname"
+                    placeholder="Firstname Lastname">
             </div>
             <div>
                 <label for="useremail">Email</label><br>
-                <input type="email" id="useremail" name="useremail" placeholder="email@something.com">
+                <input type="email" class="inputstyle" id="useremail" name="useremail"
+                    placeholder="email@something.com">
             </div>
             <div>
                 <label for="userpword">Password</label><br>
@@ -29,7 +90,10 @@
                     <path
                         d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z" />
                 </svg>
-                <input type="password" id="userpword" name="userpword" placeholder="********">
+                <input type=" password" class="inputstyle" id="userpword" name="userpword" placeholder="********"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    required>
             </div>
             <input class="signbtn" type="submit" value="Sign up">
             <span id="member">Already have an account?<span id="membersu"><a href="https://brunoelo.github.io/Signin/">
@@ -42,6 +106,11 @@
     <img id="threecircles"
         src="https://res.cloudinary.com/brunoelo/image/upload/v1590564593/SNG%20Project/Group_103circles.png">
     <div class="btns">
+        <!--renders the google signin button-->
+        <div class="g-signin2" data-onsuccess="onSignIn" data-width="143" data-height="51">
+        </div>
+        <!--end of renders the google signin button-->
+        <!--hidden button-->
         <button id="gbtn" type="button"><svg id="Capa_1" enable-background="new 0 0 512 512" height="30px"
                 viewBox="0 0 512 512" width="30px" xmlns="http://www.w3.org/2000/svg">
                 <g>
@@ -65,12 +134,14 @@
                         fill="#eb4132" />
                 </g>
             </svg><span id="gbtntext">Google</span></button>
-        <button id="fbtn" type="button"><svg id="flogo" xmlns="http://www.w3.org/2000/svg" width="20px" height="30px"
-                viewBox="0 0 320 512">
+        <!--end of hidden button-->
+        <button onclick="FB.getLoginStatus();" id="fbtn" type="button"><svg id="flogo"
+                xmlns="http://www.w3.org/2000/svg" width="20px" height="30px" viewBox="0 0 320 512">
                 <path
                     d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
             </svg><span id="fbtntext">Facebook</span></button>
     </div>
+
 </body>
 
 </html>
